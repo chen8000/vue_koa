@@ -1,0 +1,55 @@
+// 宽高
+@mixin wh($w:auto, $h:auto) {
+  width: $w;
+  height: $h;
+}
+
+// 图片撑满父元素
+@mixin bgObject {
+  @include wh(100%, 100%);
+  object-fit: cover;
+  display: block;
+}
+
+// div占位
+@mixin elePoster($b:0%) {
+  height: 0;
+  padding-bottom: $b;
+}
+
+// div 左上定位
+@mixin eleLTput {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+// 子元素 上下左右居中
+@mixin childCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// 子元素 上下居中
+@mixin childTBcenter {
+  display: flex;
+  align-items: center;
+}
+
+// 圆角
+@mixin radius ($r: 4px) {
+  border-radius: $r;
+}
+
+// 清除input的border 和outline
+@mixin clearInput {
+  border: 0;
+  outline: 0;
+}
+
+// 清除元素的默认 margin padding
+@mixin clearMarginPadding {
+  padding: 0;
+  margin: 0;
+}

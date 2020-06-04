@@ -1,0 +1,128 @@
+
+.diy-audio-box {
+    @include wh(100%, 40px);
+    line-height: 40px;
+    position: relative;
+    padding-right: 50px;
+  
+  .sound {
+    position: absolute;
+    top: 0;
+    right: 0;
+    @include wh(50px, 100%);
+    text-align: center;
+    cursor: pointer;
+    .iconfont {
+      @include theme($themes) {
+        color: themed('textDarkColor');
+      }
+      display: inline-block;
+      transition: color .3s ease;
+      @include wh(20px, 20px);
+      line-height: 20px;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+      &:hover {
+        @include theme($themes) {
+          color: themed('themeColor');
+        }
+      }
+    }
+    .soundno {
+      font-size: 23px;
+    }
+    .sound-box {
+      background: rgba(111, 140, 242, 0.15);
+      @include radius(20px);
+      padding: 10px 0;
+      padding-bottom: 15px;
+      position: absolute;
+      right: 0;
+      left: 0;
+      margin: 0 auto;
+      margin-top: -155%;
+
+      @include wh(20px, 60px);
+      .el-slider {
+        @include wh(100%, 100%);
+        .el-slider__runway {
+          @include wh(4px, 100%);
+          margin: 0 8px;
+        }
+        .el-slider__bar {
+          width: 4px;
+        }
+        .el-slider__button-wrapper {
+          @include wh(20px, 20px);
+          left: -8px;
+        }
+        .el-slider__button {
+          @include wh(8px, 8px);
+          // margin-left: -1px;
+        }
+      }
+    }
+  }
+  .audio-container {
+    background: rgba(111, 140, 242, 0.08);
+    @include radius(20px);
+    padding: 0 18px;
+    display: flex;
+    align-items: center;
+    .btn-group {
+      @include wh(30px, 100%);
+      position: relative;
+      .iconfont {
+        @include wh(20px, 20px);
+        line-height: 20px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto 0;
+        font-size: 20px;
+        cursor: pointer;
+        @include theme($themes) {
+          color: themed('themeColor');
+        }
+      }
+    }
+  }
+  .currentTime {
+      font-size: 14px;
+      margin-right: 20px;
+      @include theme($themes) {
+        color: themed('textColor')
+      }
+    }
+    .el-slider {
+      flex: 1;
+    }
+    .el-slider__runway {
+      height: 4px;
+    }
+    .el-slider__bar {
+      height: 4px;
+      @include theme($themes) {
+        background: themed('themeColor');
+      }
+    }
+    .el-slider__button-wrapper {
+      @include wh(35px, 35px);
+      top: -16px;
+    }
+    .el-slider__button {
+      @include wh(10px, 10px);
+      @include theme($themes) {
+        background: themed('themeColor');
+        border-color: themed('themeColor');
+      }
+    }
+    .el-slider__runway {
+      background: rgba(111, 140, 242, 0.15);
+    }
+}
