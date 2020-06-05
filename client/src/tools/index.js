@@ -261,3 +261,52 @@ export const removeClass = (ele, cls) => {
 }
 
 
+export const imgToBase64 = file => {
+  return new Promise(function(resolve, reject) {
+    let reader = new FileReader();
+    let imgResult = "";
+    reader.readAsDataURL(file);
+    reader.onload = function() {
+      imgResult = reader.result;
+    };
+    reader.onerror = function(error) {
+      reject(error);
+    };
+    reader.onloadend = function() {
+      resolve(imgResult);
+    };
+  });
+}
+
+
+export const base64ToImg = base64Data => {
+  //将base64转换为文件
+  let dataURLtoFile = (dataurl, filename) => { 
+    var arr = dataurl.split(','),
+        mime = arr[0].match(/:(.*?);/)[1],
+        bstr = atob(arr[1]),
+        n = bstr.length,
+        u8arr = new Uint8Array(n);
+    while (n--) {
+        u8arr[n] = bstr.charCodeAt(n);
+    }
+    return new File([u8arr], filename, { type: mime });
+}
+  //调用
+  return dataURLtoFile(base64Data, 'img')
+}
+
+
+// 删除数组中的空值
+export const trimSpace = array => {  
+  for(var i = 0 ;i<array.length;i++)  
+  {  
+      if(array[i] == "" || array[i] == " " || array[i] == null || typeof(array[i]) == "undefined")  
+      {  
+               array.splice(i,1);  
+               i= i-1;  
+      }  
+  }  
+  return array;  
+} 
+
