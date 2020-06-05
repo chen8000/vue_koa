@@ -8,6 +8,7 @@
       <el-table-column prop="domainId" label="域Id"></el-table-column>
     </el-table>
     <button @click="verToken">解析token</button>
+    <p>{{token_datas}}</p>
   </div>
 </template>
 
@@ -15,6 +16,11 @@
   import { mapActions, mapState } from 'vuex'
   import { apiPath } from '@/config'
   export default {
+    data () {
+      return {
+        token_datas: ''
+      }
+    },
     computed: {
       ...mapState({
         tableData: state => state.user.tableData
@@ -29,7 +35,7 @@
       ]),
       async verToken () {
         const result = await this.$axios(`${apiPath}/login/verify`)
-        console.log(result)
+        this.token_datas = result.data
       }
     }
   }

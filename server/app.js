@@ -18,8 +18,6 @@ require('./model/index')
 // 获取环境参数  
 const ENV = process.env.NODE_ENV
 
-// 模版渲染
-const index = require('./routes/index')
 // api
 const api = require('./api/index')
 
@@ -67,12 +65,12 @@ app.use((ctx, next) => {
 app.use(koajwt({
   secret: tokenSecret
 }).unless({
+  // path: [/\/login\/index/], // login页面可以不用验证token
   path: [/\/login/], // login页面可以不用验证token
 }))
 
 
 // routes
-router.use('/', index)
 router.use('/api', api)
 
 //启动路由
