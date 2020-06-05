@@ -3,7 +3,7 @@ const router = require('koa-router')()
 const jwt = require('jsonwebtoken')
 
 const { User } = require('../../model/index')
-const { tokenSeccret } = require('../../config')
+const { tokenSecret } = require('../../config')
 
 // 查
 router.get('/', async ctx => {
@@ -25,7 +25,7 @@ router.get('/', async ctx => {
     name: result.username,
     pwd: result.password,
     _id: result.id
-  }, tokenSeccret) 
+  }, tokenSecret) 
 
 
   ctx.body = {msg: '登录成功', code: 1, result, token}
@@ -33,7 +33,7 @@ router.get('/', async ctx => {
 
 // 解析token
 router.get('/verify', async ctx => {
-  jwt.verify(ctx.header.authorization.split(' ')[1], tokenSeccret, (err,res)=>{
+  jwt.verify(ctx.header.authorization.split(' ')[1], tokenSecret, (err,res)=>{
     if(err){
       ctx.body = err
       return

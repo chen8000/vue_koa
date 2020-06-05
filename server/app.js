@@ -10,7 +10,7 @@ const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
 const cors = require('koa2-cors')
 const koajwt = require('koa-jwt')
-const { tokenSeccret } = require('./config')
+const { tokenSecret } = require('./config')
 
 // sequelize
 require('./model/index')
@@ -65,7 +65,7 @@ app.use((ctx, next) => {
   })
 })
 app.use(koajwt({
-  secret: tokenSeccret
+  secret: tokenSecret
 }).unless({
   path: [/\/login/], // login页面可以不用验证token
 }))
